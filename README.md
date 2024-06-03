@@ -77,3 +77,13 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+
+**********************************************************************************
+## NPM Install: Dependencies Addded
+- [npm i react-navigation/drawer](https://www.npmjs.com/package/@react-navigation/drawer)
+- [npm i react-navigation/stack](https://www.npmjs.com/package/@react-navigation/stack)
+- [npm i react-native-async-storage/async-storage](https://www.npmjs.com/package/@react-native-async-storage/async-storage)
+- [npm i fortawesome/react-native-fontawesome](https://www.npmjs.com/package/@fortawesome/react-native-fontawesome)
+- [npm i fortawesome/free-solid-svg-icons](https://www.npmjs.com/package/@fortawesome/free-solid-svg-icons)
+
