@@ -1,43 +1,41 @@
-import React, { useState } from 'react';
-import { View, ScrollView, TouchableOpacity,StyleSheet,Text, Dimensions } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
-import { Path } from 'react-native-svg';
+import React, { useState } from "react";
+import {
+  View,
+  ScrollView,
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  Dimensions,
+} from "react-native";
+import { Picker } from "@react-native-picker/picker";
+import { Path } from "react-native-svg";
 
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { height } from "@fortawesome/free-solid-svg-icons/fa0";
+import FastImage from "react-native-fast-image";
 
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { height } from '@fortawesome/free-solid-svg-icons/fa0';
-import FastImage from 'react-native-fast-image';
-
-
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get("window");
 
 const ProductDetails = () => {
-
   const [quantity, setQuantity] = useState(1);
 
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
 
-  
-    const decreaseQuantity = () => {
-      if (quantity > 1) {
-        setQuantity(quantity - 1);
-      }
-    };
-  
-    const increaseQuantity = () => {
-      setQuantity(quantity + 1);
-    };
-
-
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
+  };
 
   const [wishlistCount, setWishlistCount] = useState(0);
-  const [selectedSizess, setSelectedSize] = useState(''); // State to store selected size
-
-
+  const [selectedSizess, setSelectedSize] = useState(""); // State to store selected size
 
   // Function to handle adding to wishlist
   const handleAddToWishlist = () => {
-    setWishlistCount(wishlistCount + 1); 
+    setWishlistCount(wishlistCount + 1);
   };
 
   // Function to handle size selection
@@ -45,25 +43,69 @@ const ProductDetails = () => {
     setSelectedSize(size);
   };
 
-
-  
-
-
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const data = [
-    {id: 1, name: 'Pour Your Heart In - Black Romper', image: require('./images/1.png'), price: '42.00'},
-    {id: 2, name: 'Hugged With Lace - Sage Tunic', image: require('./images/2.png'), price: '34.00'},
-    {id: 3, name: 'Katie - Blue Floral Cold Shoulder', image: require('./images/3.png'), price: '36.00'},
-    {id: 4, name: 'Audry - Mauve Laced Dress', image: require('./images/4.png'), price: '39.00'},
-    {id: 5, name: 'Closest To You - Baby Pink Top', image: require('./images/5.png'), price: '36.00'},
-    {id: 6, name: 'Hometown Plaid - Pink', image: require('./images/6.png'), price: '32.00'},
-    {id: 7, name: 'Ditsy Dynasty - Ivory Top', image: require('./images/7.png'), price: '34.00'},
-    {id: 8, name: 'Undercover Star - Short Sleeve', image: require('./images/8.png'), price: '36.00'},
-    {id: 9, name: 'Total Package - Leggings', image: require('./images/9.png'), price: '32.00'},
-    {id: 10, name: 'Proud To Be Me - Cardigan', image: require('./images/10.png'), price: '54.00'},
+    {
+      id: 1,
+      name: "Pour Your Heart In - Black Romper",
+      image: require("../images/1.png"),
+      price: "42.00",
+    },
+    {
+      id: 2,
+      name: "Hugged With Lace - Sage Tunic",
+      image: require("../images/2.png"),
+      price: "34.00",
+    },
+    {
+      id: 3,
+      name: "Katie - Blue Floral Cold Shoulder",
+      image: require("../images/3.png"),
+      price: "36.00",
+    },
+    {
+      id: 4,
+      name: "Audry - Mauve Laced Dress",
+      image: require("../images/4.png"),
+      price: "39.00",
+    },
+    {
+      id: 5,
+      name: "Closest To You - Baby Pink Top",
+      image: require("../images/5.png"),
+      price: "36.00",
+    },
+    {
+      id: 6,
+      name: "Hometown Plaid - Pink",
+      image: require("../images/6.png"),
+      price: "32.00",
+    },
+    {
+      id: 7,
+      name: "Ditsy Dynasty - Ivory Top",
+      image: require("../images/7.png"),
+      price: "34.00",
+    },
+    {
+      id: 8,
+      name: "Undercover Star - Short Sleeve",
+      image: require("../images/8.png"),
+      price: "36.00",
+    },
+    {
+      id: 9,
+      name: "Total Package - Leggings",
+      image: require("../images/9.png"),
+      price: "32.00",
+    },
+    {
+      id: 10,
+      name: "Proud To Be Me - Cardigan",
+      image: require("../images/10.png"),
+      price: "54.00",
+    },
   ];
-
-
 
   const handleThumbnailClick = (index) => {
     setSelectedImageIndex(index);
@@ -208,15 +250,15 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   item: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     borderBottomWidth: 1,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     paddingVertical: 10,
   },
   image: {
-       width: width / 2,
-    height: (width / 2) / 0.67,
+    width: width / 2,
+    height: width / 2 / 0.67,
     // width: 100,
     // height: 150,
     marginRight: 10,
@@ -225,194 +267,170 @@ const styles = StyleSheet.create({
   topContainer: {
     flex: 1,
     marginRight: 10,
-    flexDirection: 'row',
-
+    flexDirection: "row",
   },
 
   infoContainer: {
     flex: 1,
     marginRight: 10,
-
   },
   infoContainerwishlist: {
     flex: 1,
     marginRight: 10,
-    marginLeft:20,
-    paddingTop:10
+    marginLeft: 20,
+    paddingTop: 10,
+  },
 
-  }
-  
-  ,
   textFont: {
     fontSize: 20,
     marginBottom: 5,
-    fontFamily: 'NunitoSans-Regular',
-    paddingLeft:10,
-    paddingTop:5
-
-
+    fontFamily: "NunitoSans-Regular",
+    paddingLeft: 10,
+    paddingTop: 5,
   },
 
   textsizeFont: {
     fontSize: 14,
     marginBottom: 5,
-    fontFamily: 'NunitoSans-Regular',
-    paddingLeft:10
-
+    fontFamily: "NunitoSans-Regular",
+    paddingLeft: 10,
   },
   textstockFont: {
     fontSize: 12,
     marginBottom: 5,
-    fontFamily: 'NunitoSans-Regular',
-    color: 'rgba(92, 92, 92, 1.0)',
-    paddingLeft:10
-
-
-
+    fontFamily: "NunitoSans-Regular",
+    color: "rgba(92, 92, 92, 1.0)",
+    paddingLeft: 10,
   },
-    subHeader: {
-    textAlign: 'center',
+  subHeader: {
+    textAlign: "center",
     fontSize: 14,
-    fontFamily:'NunitoSans-Regular',
-    backgroundColor: 'rgba(244, 246, 248, 1.0)',
-
+    fontFamily: "NunitoSans-Regular",
+    backgroundColor: "rgba(244, 246, 248, 1.0)",
   },
   quantityContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderWidth: 1, 
-    borderColor: '#000',
-    borderRadius: 5, 
-    padding: 10, 
-    width:120,
-    fontFamily: 'NunitoSans-Regular',
-
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#000",
+    borderRadius: 5,
+    padding: 10,
+    width: 120,
+    fontFamily: "NunitoSans-Regular",
   },
   quantityButton: {
     paddingHorizontal: 10,
     fontSize: 20,
-    fontWeight: 'bold',
-    color: '#007bff',
+    fontWeight: "bold",
+    color: "#007bff",
   },
   quantity: {
     paddingHorizontal: 10,
     fontSize: 16,
   },
   footer: {
-    backgroundColor: '#ccc',
+    backgroundColor: "#ccc",
     padding: 20,
-    alignItems: 'center',
-    fontFamily: 'NunitoSans-Regular',
-
+    alignItems: "center",
+    fontFamily: "NunitoSans-Regular",
   },
-
 
   subtotal: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 10,
-    fontFamily: 'NunitoSans-Regular',
-
+    fontFamily: "NunitoSans-Regular",
   },
   taxShipping: {
     fontSize: 16,
     marginBottom: 10,
-    fontFamily: 'NunitoSans-Regular',
-
+    fontFamily: "NunitoSans-Regular",
   },
   addNote: {
     fontSize: 16,
-    color: '#007bff', // Link color
-    fontFamily: 'NunitoSans-Regular',
-
+    color: "#007bff", // Link color
+    fontFamily: "NunitoSans-Regular",
   },
   containerbottom: {
-    backgroundColor: '#f2f2f2',
+    backgroundColor: "#f2f2f2",
     padding: 20,
   },
   checkoutButton: {
-    backgroundColor: '#B56957',
+    backgroundColor: "#B56957",
     paddingVertical: 16,
     paddingHorizontal: 130,
     borderRadius: 5,
     marginBottom: 20,
-    alignSelf: 'center',
-    
+    alignSelf: "center",
   },
   checkoutButtonText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 18,
-    fontWeight: 'bold',
-    fontFamily: 'NunitoSans-Regular',
-
+    fontWeight: "bold",
+    fontFamily: "NunitoSans-Regular",
   },
 
   button: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'white',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "white",
     paddingHorizontal: 12,
     borderWidth: 1,
-    borderColor: '#EB5528',
+    borderColor: "#EB5528",
     borderRadius: 2,
-    backgroundColor:'#EB5528',
+    backgroundColor: "#EB5528",
     height: 44,
-    alignSelf: 'flex-start'
+    alignSelf: "flex-start",
   },
   icon: {
     marginRight: 5,
   },
   text: {
     fontSize: 16,
-    color: 'white',
-    fontFamily: 'NunitoSans-Regular',
-
+    color: "white",
+    fontFamily: "NunitoSans-Regular",
   },
   wishlistCountContainer: {
     marginLeft: 5,
   },
   wishlistCount: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontFamily: 'NunitoSans-Regular',
-
+    color: "white",
+    fontWeight: "bold",
+    fontFamily: "NunitoSans-Regular",
   },
-   label: {
+  label: {
     fontSize: 16,
     marginBottom: 5,
-    color:'red'
-
+    color: "red",
   },
-  
+
   label: {
     fontSize: 16,
     marginBottom: 5,
     marginLeft: 20,
-    fontFamily: 'NunitoSans-Regular',
-
+    fontFamily: "NunitoSans-Regular",
   },
   picker: {
     height: 50,
-    width: '100%',
+    width: "100%",
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderRadius: 5,
     paddingHorizontal: 10,
-    fontFamily: 'NunitoSans-Regular',
-
+    fontFamily: "NunitoSans-Regular",
   },
-    newLabel: {
-    position: 'absolute',
-    top: 10, 
-    right: 10, 
-    backgroundColor: 'rgba(181, 105, 87, 1.0)', 
-    color: 'white',
+  newLabel: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+    backgroundColor: "rgba(181, 105, 87, 1.0)",
+    color: "white",
     padding: 5,
     borderRadius: 1,
-    fontFamily:'NunitoSans-Regular',
-      fontSize: 12,
-    alignItems: 'flex-end',
+    fontFamily: "NunitoSans-Regular",
+    fontSize: 12,
+    alignItems: "flex-end",
   },
   selectedSize: {
     marginTop: 10,
@@ -420,130 +438,113 @@ const styles = StyleSheet.create({
   },
   containerpicker: {
     marginVertical: 10,
-    marginLeft:  20
+    marginLeft: 20,
   },
 
   containerQUT: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     paddingHorizontal: 20,
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: "black",
     borderRadius: 5,
     height: 40,
     width: 120,
-
   },
   buttonQUT: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontFamily: 'NunitoSans-Regular',
-
+    alignItems: "center",
+    justifyContent: "center",
+    fontFamily: "NunitoSans-Regular",
   },
   buttonTextQUT: {
     fontSize: 20,
-    color: 'black',
-    fontFamily: 'NunitoSans-Regular',
-
+    color: "black",
+    fontFamily: "NunitoSans-Regular",
   },
   quantityQUT: {
     flex: 2,
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 18,
-    fontFamily: 'NunitoSans-Regular',
-
+    fontFamily: "NunitoSans-Regular",
   },
   lableQUT: {
     flex: 1,
-    color:'black',
-    marginBottom:10,
-    fontFamily: 'NunitoSans-Regular',
-
-     },
-
-
-
-     containerBTN: {
-      justifyContent: 'space-between',
-      marginHorizontal: 10,
-      fontFamily: 'NunitoSans-Regular',
-
-    
-    },
-  imageContainer: {
-    position: 'relative',
-    resizeMode: 'cover'
+    color: "black",
+    marginBottom: 10,
+    fontFamily: "NunitoSans-Regular",
   },
-    buttonBTN1: {
-      flex: 1,
-      height: 40,
-      alignItems: 'center',
-      marginHorizontal: 10,
-      borderRadius: 0,
-      borderColor:'black',
-      borderWidth:1,
-      marginTop:10,
-      fontFamily: 'NunitoSans-Regular',
-      color:'black'
 
+  containerBTN: {
+    justifyContent: "space-between",
+    marginHorizontal: 10,
+    fontFamily: "NunitoSans-Regular",
+  },
+  imageContainer: {
+    position: "relative",
+    resizeMode: "cover",
+  },
+  buttonBTN1: {
+    flex: 1,
+    height: 40,
+    alignItems: "center",
+    marginHorizontal: 10,
+    borderRadius: 0,
+    borderColor: "black",
+    borderWidth: 1,
+    marginTop: 10,
+    fontFamily: "NunitoSans-Regular",
+    color: "black",
+  },
+  buttonBTN2: {
+    flex: 1,
+    height: 40,
+    backgroundColor: "#5433EB",
+    alignItems: "center",
+    marginHorizontal: 10,
+    borderRadius: 0,
+    marginTop: 10,
+    fontFamily: "NunitoSans-Regular",
+    color: "white",
+  },
+  buttonTextBTN1: {
+    color: "black",
+    fontSize: 14,
+    marginTop: 10,
+    fontFamily: "NunitoSans-Regular",
+  },
+  buttonTextBTN2: {
+    color: "white",
+    fontSize: 14,
+    marginTop: 10,
+    fontFamily: "NunitoSans-Regular",
+  },
 
-    },
-    buttonBTN2: {
-      flex: 1,
-      height: 40,
-      backgroundColor: '#5433EB',
-      alignItems: 'center',
-      marginHorizontal: 10,
-      borderRadius: 0,
-      marginTop:10,
-      fontFamily: 'NunitoSans-Regular',
-      color:'white'
-
-    },
-    buttonTextBTN1: {
-      color: 'black',
-      fontSize: 14,
-      marginTop:10,
-      fontFamily: 'NunitoSans-Regular',
-
-    },
-    buttonTextBTN2: {
-      color: 'white',
-      fontSize: 14,
-      marginTop:10,
-      fontFamily: 'NunitoSans-Regular',
-
-    },
-
-    containerend: {
-      padding: 20,
-    },
-    titleend: {
-      fontSize: 18,
-      fontWeight: 'bold',
-      marginBottom: 10,
-      color: 'rgba(92, 92, 92, 1.0)',
-    },
-    descriptionend: {
-      marginBottom: 20,
-      color: 'rgba(92, 92, 92, 1.0)',
-    },
-    sectionTitleend: {
-      fontSize: 16,
-      fontWeight: 'bold',
-      marginTop: 20,
-      marginBottom: 10,
-      color: 'rgba(92, 92, 92, 1.0)',
-    },
-
-  
+  containerend: {
+    padding: 20,
+  },
+  titleend: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 10,
+    color: "rgba(92, 92, 92, 1.0)",
+  },
+  descriptionend: {
+    marginBottom: 20,
+    color: "rgba(92, 92, 92, 1.0)",
+  },
+  sectionTitleend: {
+    fontSize: 16,
+    fontWeight: "bold",
+    marginTop: 20,
+    marginBottom: 10,
+    color: "rgba(92, 92, 92, 1.0)",
+  },
 });
-
 
 export default ProductDetails;
 
 ProductDetails.navigationOptions = {
-  headerLeft: 'Back',
+  headerLeft: "Back",
 };

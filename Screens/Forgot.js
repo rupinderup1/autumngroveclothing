@@ -8,7 +8,6 @@
 //     // Here, you would implement the logic to send a reset password email
 //     // For now, let's just log the entered email
 
-
 //     Alert.alert('Reset Password', `An email will be sent to ${email} to reset your password.`);
 
 //   };
@@ -30,15 +29,11 @@
 //         keyboardType="email-address"
 //       />
 
-
-
 // <TouchableOpacity
 // onPress = {handleResetPassword}>
 // <Text style={styles.containerbtn}>SUBMIT</Text>
 // </TouchableOpacity>
 // iPhone 15 Pro Maxclear
-
-
 
 //     </View>
 //   );
@@ -64,7 +59,6 @@
 //     fontFamily: 'NunitoSans-Regular',
 //     alignItems:"center",
 //   },
-  
 
 //   title: {
 //     left: 15,
@@ -111,21 +105,23 @@
 // export default ResetPasswordScreen;
 // // 'rgba(244, 246, 248, 1.0)',
 
-
-import React, { useState } from 'react';
-import { Alert, StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native';
-
+import React, { useState } from "react";
+import {
+  Alert,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  TouchableOpacity,
+} from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
 
-
 const ResetPasswordScreen = () => {
-
   const navigation = useNavigation();
 
-
   // State variable to hold the user's email
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
   // Function to handle the reset password action
   const handleResetPassword = () => {
@@ -134,39 +130,36 @@ const ResetPasswordScreen = () => {
     console.log(`Reset password requested for email: ${email}`);
 
     // Display an alert to inform the user that a reset password email will be sent
-    Alert.alert('Reset Password', `An email will be sent to ${email} to reset your password.`);
+    Alert.alert(
+      "Reset Password",
+      `An email will be sent to ${email} to reset your password.`
+    );
   };
   const handlePress = () => {
-    console.log('Touchable component pressed');
+    console.log("Touchable component pressed");
   };
   return (
-
     <View style={styles.container}>
       <View style={styles.subHeaderView}>
-        <Text style={ styles.subHeaderLabel}>
-          SHIPS FROM PEORIA, AZ
-        </Text>
+        <Text style={styles.subHeaderLabel}>SHIPS FROM PEORIA, AZ</Text>
       </View>
       <View style={styles.subContainer}>
         <View>
-           <Text style={styles.title}>
-            Reset your password
-          </Text>
+          <Text style={styles.title}>Reset your password</Text>
           <Text style={styles.description}>
             We will send you an email to reset your password
           </Text>
         </View>
-        <View style={{top:20, width: '100%'}}>
-          <Text style={styles.inputHeader}>
-            Email
-          </Text>
-          <TextInput style={styles.input}
+        <View style={{ top: 20, width: "100%" }}>
+          <Text style={styles.inputHeader}>Email</Text>
+          <TextInput
+            style={styles.input}
             value={email}
             onChangeText={setEmail}
-            keyboardType={setEmail}>
-          </TextInput>
+            keyboardType={setEmail}
+          ></TextInput>
           <TouchableOpacity onPress={handlePress} style={styles.touchable}>
-           <Text style={styles.text}>SUBMIT</Text>
+            <Text style={styles.text}>SUBMIT</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -177,62 +170,60 @@ const ResetPasswordScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
   subContainer: {
-    justifyContent: 'center',
-    alignItems: 'left',
+    justifyContent: "center",
+    alignItems: "left",
     paddingHorizontal: 15,
   },
   title: {
     fontSize: 22,
     top: 15,
-    fontFamily: 'NunitoSans-Regular',
+    fontFamily: "NunitoSans-Regular",
   },
   description: {
     top: 25,
     fontSize: 14,
-    fontFamily: 'NunitoSans-Regular',
+    fontFamily: "NunitoSans-Regular",
   },
   inputHeader: {
     top: 12,
     fontSize: 14,
-    fontFamily: 'NunitoSans-Regular',
+    fontFamily: "NunitoSans-Regular",
   },
   input: {
     padding: 8,
-    width: '100%',
-    fontFamily: 'NunitoSans-Regular',
+    width: "100%",
+    fontFamily: "NunitoSans-Regular",
     fontSize: 17,
     height: 40,
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: "gray",
     borderRadius: 2,
     top: 15,
   },
   subHeaderView: {
     height: 25,
-    backgroundColor: 'rgba(244, 246, 248, 1.0)',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "rgba(244, 246, 248, 1.0)",
+    justifyContent: "center",
+    alignItems: "center",
   },
   touchable: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(92, 92, 92, 1.0)',
-    width: '100%',
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "rgba(92, 92, 92, 1.0)",
+    width: "100%",
     top: 25,
     borderRadius: 2,
     height: 50,
   },
   text: {
-    color: 'white',
+    color: "white",
     fontSize: 16,
-    fontFamily: 'NunitoSans-SemiBold'
+    fontFamily: "NunitoSans-SemiBold",
   },
-  subHeaderLabel: {
-
-  }
+  subHeaderLabel: {},
 });
 
 export default ResetPasswordScreen;

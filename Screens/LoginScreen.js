@@ -61,7 +61,7 @@ const LoginScreen = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require("./images/logo.jpg")}
+        source={require("../images/logo.jpg")}
         style={styles.image}
         resizeMode="contain"
       />

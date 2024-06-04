@@ -10,22 +10,18 @@ import {
   View,
 } from "react-native";
 
-
 const SignUp = () => {
   const navigation = useNavigation();
   const onPressLogin = () => {
     navigation.navigate("Home");
   };
-    
-    
+
   const onPressForgotPassword = () => {
     // Do something about forgot password operation
   };
-    
-    
-    
-    const onPressSignUp = () => { };
-    
+
+  const onPressSignUp = () => {};
+
   const onPressGuest = () => {
     navigation.navigate("Home");
   };
@@ -34,16 +30,14 @@ const SignUp = () => {
     email: "",
     password: "",
   });
-    
-    
-    
+
   return (
     <View style={styles.container}>
       <Image
-        source={require("./images/logo.jpg")}
+        source={require("../images/logo.jpg")}
         style={styles.image}
         resizeMode="contain" // adjust resizeMode as needed
-          />
+      />
 
       <View style={styles.inputView}>
         <TextInput
