@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, ScrollView, Image, TouchableOpacity,StyleSheet,Text, Dimensions } from 'react-native';
+import { View, ScrollView, TouchableOpacity,StyleSheet,Text, Dimensions } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { Path } from 'react-native-svg';
 
@@ -7,6 +7,7 @@ import { Path } from 'react-native-svg';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { height } from '@fortawesome/free-solid-svg-icons/fa0';
+import FastImage from 'react-native-fast-image';
 
 
 const { width } = Dimensions.get('window');
@@ -69,127 +70,132 @@ const ProductDetails = () => {
   };
 
   return (
-   
-
-
-
     <ScrollView style={{ flex: 1 }}>
       <Text style={styles.subHeader}>SHIPS FROM PEORIA, AZ</Text>
 
-<View style={styles.imageContainer}>
-
-      <Image
-        source={data[selectedImageIndex].image}
-        style={{ width: '100%', height: width / 0.67  }}
-        resizeMode="stretch"
-      />
-
-<Text style={styles.newLabel}>New in</Text>
-</View>
+      <View style={styles.imageContainer}>
+        <FastImage
+          source={data[selectedImageIndex].image}
+          style={{ width: "100%", height: width / 0.67 }}
+          resizeMode={FastImage.resizeMode.stretch}
+        />
+        <Text style={styles.newLabel}>New in</Text>
+      </View>
 
       {/* Scrollable thumbnails */}
-        <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 10 }}>
-          {data.map((item, index) => (
-            <TouchableOpacity key={index} onPress={() => handleThumbnailClick(index)}>
-              <Image
-                source={item.image}
-                style={{ width: 100, height: 100 / 0.67, marginHorizontal: 5 }}
-                resizeMode="stretch"
-              />
-            </TouchableOpacity>
-          ))}
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "center",
+          marginTop: 10,
+        }}
+      >
+        {data.map((item, index) => (
+          <TouchableOpacity
+            key={index}
+            onPress={() => handleThumbnailClick(index)}
+          >
+            <FastImage
+              source={item.image}
+              style={{ width: 100, height: 100 / 0.67, marginHorizontal: 5 }}
+              resizeMode={FastImage.resizeMode.stretch}
+            />
+          </TouchableOpacity>
+        ))}
+      </View>
+
+      <View style={styles.infoContainer}>
+        <Text style={styles.textFont}>{"So Much Heart To Give - Gabby"}</Text>
+        <Text style={styles.textFont}>${"42.00"}</Text>
+        <Text style={styles.textstockFont}>
+          {
+            "Pay in 4 interest-free installments for orders over $50.00 with shop pay"
+          }
+        </Text>
+
+        <View style={styles.infoContainerwishlist}>
+          <TouchableOpacity style={styles.button} onPress={handleAddToWishlist}>
+            <FontAwesomeIcon icon={faHeart} color="white" />
+            <Text style={styles.text}> ADDED TO WISHLIST</Text>
+            <View style={styles.wishlistCountContainer}>
+              <Text style={styles.wishlistCount}>{wishlistCount}</Text>
+            </View>
+          </TouchableOpacity>
         </View>
 
+        <View style={styles.containerpicker}>
+          <Text style={styles.lableQUT}>Quantity</Text>
 
-        <View style={styles.infoContainer}>
+          <View style={styles.containerQUT}>
+            <TouchableOpacity
+              style={styles.buttonQUT}
+              onPress={decreaseQuantity}
+            >
+              <Text style={styles.buttonTextQUT}>-</Text>
+            </TouchableOpacity>
+            <Text style={styles.quantity}>{quantity}</Text>
+            <TouchableOpacity
+              style={styles.buttonQUT}
+              onPress={increaseQuantity}
+            >
+              <Text style={styles.buttonTextQUT}>+</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
 
-        
-<Text style={styles.textFont}>{'So Much Heart To Give - Gabby'}</Text>
-<Text style={styles.textFont}>${'42.00'}</Text>
-<Text style={styles.textstockFont}>{'Pay in 4 interest-free installments for orders over $50.00 with shop pay'}</Text>
+        <View style={styles.containerBTN}>
+          <TouchableOpacity style={styles.buttonBTN1}>
+            <Text style={styles.buttonTextBTN1}>ADD TO CART</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.buttonBTN2}>
+            <Text style={styles.buttonTextBTN2}>But with shop pay</Text>
+          </TouchableOpacity>
+        </View>
 
+        <View style={styles.containerend}>
+          <Text style={styles.titleend}>
+            Effortlessly chic with So Much Heart To Give!
+          </Text>
+          <Text style={styles.descriptionend}>
+            Gabby's relaxed fit, three quarter sleeves, and mandarin collar make
+            it perfect for any occasion. The v-neck adds a touch of elegance,
+            while the heart print on luxurious Bulgari fabric shows off your
+            playful side. Spread the love!
+          </Text>
 
+          <Text style={styles.sectionTitleend}>Material & Care</Text>
+          <Text>95% Polyester / 5% Spandex</Text>
+          <Text>Wash Cold, Inside Out</Text>
+          <Text>Hang Dry</Text>
+          <Text>Imported</Text>
+          <Text>Lots of Stretch</Text>
+          <Text>Color: Black</Text>
 
+          <Text style={styles.sectionTitleend}>Size & Fit</Text>
+          <Text>S 2-6, M 8-10, L 12-14, XL 16-18, 2X 20-22, 3X 24-26</Text>
+          <Text>True to Size</Text>
+          <Text>Model is 5'7 wearing size Small</Text>
+          <Text>Model is 5'5 wearing size Medium</Text>
+          <Text>Model is 5'6 wearing size 1X</Text>
 
-<View style={styles.infoContainerwishlist}>
-
-
-<TouchableOpacity style={styles.button} onPress={handleAddToWishlist}>
-            <FontAwesomeIcon icon={faHeart} color="white" />
-      <Text style={styles.text}>  ADDED TO WISHLIST</Text>
-      <View style={styles.wishlistCountContainer}>
-        <Text style={styles.wishlistCount}>{wishlistCount}</Text>
+          <Text style={styles.sectionTitleend}>Measurement</Text>
+          <Text>
+            Shoulder: S (16"), M (16.5"), L (17"), 1X (17.5"), 2X (18"), 3X
+            (18.5")
+          </Text>
+          <Text>
+            Bust: S (20"), M (21"), L (22"), 1X (23"), 2X (24"), 3X (25")
+          </Text>
+          <Text>
+            Length: S (29"), M (29.5"), L (30"), 1X (31"), 2X (31.5"), 3X (32")
+          </Text>
+          <Text>
+            Arm Length: S (12"), M (12.5"), L (12.5"), 1X (12.5"), 2X (13"), 3X
+            (13")
+          </Text>
+        </View>
       </View>
-    </TouchableOpacity>
-
-    </View>
-
-
-    <View style={styles.containerpicker}>
-    <Text style={styles.lableQUT}>Quantity</Text>
-
-
-    <View style={styles.containerQUT}>
-
-
-      <TouchableOpacity style={styles.buttonQUT} onPress={decreaseQuantity}>
-        <Text style={styles.buttonTextQUT}>-</Text>
-      </TouchableOpacity>
-      <Text style={styles.quantity}>{quantity}</Text>
-      <TouchableOpacity style={styles.buttonQUT} onPress={increaseQuantity}>
-        <Text style={styles.buttonTextQUT}>+</Text>
-      </TouchableOpacity>
-    </View>
-
-
-    </View>
-
-
-    <View style={styles.containerBTN}>
-      <TouchableOpacity style={styles.buttonBTN1}>
-        <Text style={styles.buttonTextBTN1}>ADD TO CART</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.buttonBTN2}>
-        <Text style={styles.buttonTextBTN2}>But with shop pay</Text>
-      </TouchableOpacity>
-    </View>
-
-
-    <View style={styles.containerend}>
-      <Text style={styles.titleend}>Effortlessly chic with So Much Heart To Give!</Text>
-      <Text style={styles.descriptionend}>Gabby's relaxed fit, three quarter sleeves, and mandarin collar make it perfect for any occasion. The v-neck adds a touch of elegance, while the heart print on luxurious Bulgari fabric shows off your playful side. Spread the love!</Text>
-      
-      <Text style={styles.sectionTitleend}>Material & Care</Text>
-      <Text>95% Polyester / 5% Spandex</Text>
-      <Text>Wash Cold, Inside Out</Text>
-      <Text>Hang Dry</Text>
-      <Text>Imported</Text>
-      <Text>Lots of Stretch</Text>
-      <Text>Color: Black</Text>
-      
-      <Text style={styles.sectionTitleend}>Size & Fit</Text>
-      <Text>S 2-6, M 8-10, L 12-14, XL 16-18, 2X 20-22, 3X 24-26</Text>
-      <Text>True to Size</Text>
-      <Text>Model is 5'7 wearing size Small</Text>
-      <Text>Model is 5'5 wearing size Medium</Text>
-      <Text>Model is 5'6 wearing size 1X</Text>
-      
-      <Text style={styles.sectionTitleend}>Measurement</Text>
-      <Text>Shoulder: S (16"), M (16.5"), L (17"), 1X (17.5"), 2X (18"), 3X (18.5")</Text>
-      <Text>Bust: S (20"), M (21"), L (22"), 1X (23"), 2X (24"), 3X (25")</Text>
-      <Text>Length: S (29"), M (29.5"), L (30"), 1X (31"), 2X (31.5"), 3X (32")</Text>
-      <Text>Arm Length: S (12"), M (12.5"), L (12.5"), 1X (12.5"), 2X (13"), 3X (13")</Text>
-      
-     
-    </View>
-    
-
-
-
-    
-</View>
-
-      </ScrollView>
+    </ScrollView>
   );
 };
 
